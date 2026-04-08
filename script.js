@@ -3,37 +3,37 @@
 // ========================================
 const projectsData = {
   'ar-dog-trainer': {
-    title: 'AR Dog Trainer',
+    title: 'Trufosos - Entrenador de perros',
     category: 'AR / Android',
     description: `Aplicación de realidad aumentada para Android que permite a los usuarios visualizar 
-    y aprender técnicas de entrenamiento canino de manera interactiva. Los usuarios pueden seleccionar 
-    diferentes razas de perros y ver cómo realizan diversos trucos en su entorno real a través de la cámara.
+    y aprender técnicas de entrenamiento canino de manera interactiva. Los usuarios pueden observar un catálogo 
+    diferentes razas de perros, por medio de la cámara de su dispositivo móvil al contar con los marcadores descargables
+    seleccionar uno de ellos e iniciar un pequeño juego de tres niveles como guía del paso a paso del entrenamiento, 
+    con ello aprender los diferentes escenarios que se enfrentarán con un perro real.
     
-    La aplicación cuenta con una biblioteca de trucos animados, desde comandos básicos como "sentado" y "dame la pata", 
-    hasta trucos más avanzados. Cada truco incluye instrucciones paso a paso para que el usuario pueda 
-    entrenar a su mascota real.`,
+    La aplicación cuenta con comandos básicos como "sentado" y "dame la pata". Cada truco incluye instrucciones paso
+    a paso para que el usuario pueda entrenar a su mascota real.`,
     tools: [
       { name: 'Unity', icon: '🎮' },
-      { name: 'AR Foundation', icon: '📱' },
+      { name: 'Vuforia', icon: '📱' },
       { name: 'C#', icon: '💻' },
-      { name: 'Blender', icon: '🎨' },
-      { name: 'Android SDK', icon: '🤖' }
+      { name: '3ds Max', icon: '🎨' },
     ],
     features: [
-      'Selección de múltiples razas de perros',
+      'Visualización de múltiples razas de perros',
       'Visualización en realidad aumentada',
-      'Biblioteca de trucos animados',
+      'Biblioteca de trucos "Sentado" y "Dar la pata"',
       'Instrucciones paso a paso',
       'Interfaz intuitiva y amigable',
-      'Detección de superficies planas'
+      'Detección de marcadores',
+      "Detección de voz al dar el comando de entrenamiento"
     ],
-    implementation: `El proyecto fue desarrollado en Unity utilizando AR Foundation para compatibilidad 
-    con dispositivos Android. Los modelos 3D de los perros fueron creados y animados en Blender, 
-    optimizados para rendimiento móvil. Se implementó un sistema de detección de planos para 
-    posicionar los modelos en el mundo real, junto con controles táctiles para rotación y escala.`,
+    implementation: `El proyecto fue desarrollado en Unity y con la ayuda de un asset se implemento el reconocimiento de voz.
+    Los modelos 3D de los perros fueron adquiridos en internet, y el perro seleccionable fue modificado y animado en 3ds Max. 
+    Se implementó un sistema de detección de marcadores para posicionar los modelos en el mundo real.`,
     links: {
       demo: '#',
-      github: '#'
+      github: 'https://github.com/marlene-Mar/ProyectoRA.git'
     },
     media: [
       { type: 'image', placeholder: '🐕', text: 'Vista principal AR' },
