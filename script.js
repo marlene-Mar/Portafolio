@@ -4,7 +4,7 @@
 const projectsData = {
   'ar-dog-trainer': {
     title: 'Trufosos - Entrenador de perros',
-    category: 'AR / Android',
+    category: 'AR',
     description: `Aplicación de realidad aumentada para Android que permite a los usuarios visualizar 
     y aprender técnicas de entrenamiento canino de manera interactiva. Los usuarios pueden observar un catálogo 
     diferentes razas de perros, por medio de la cámara de su dispositivo móvil al contar con los marcadores descargables
