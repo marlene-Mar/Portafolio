@@ -36,9 +36,10 @@ const projectsData = {
       github: 'https://github.com/marlene-Mar/ProyectoRA.git'
     },
     media: [
-      { type: 'image', placeholder: '🐕', text: 'Vista principal AR' },
-      { type: 'image', placeholder: '🎯', text: 'Selección de trucos' },
-      { type: 'image', placeholder: '📋', text: 'Instrucciones' }
+      { type: 'image', src: 'images/vistaRA.jpeg', text: 'Vista principal AR' },
+      { type: 'image', src: 'images/trucos.jpeg', text: 'Selección de trucos' },
+      { type: 'image', src: 'images/instrucciones.jpeg', text: 'Intrucciones' },
+      { type: 'image', placeholder: '📋', text: 'Vídeo' }
     ]
   },
   'sweet-fight': {
@@ -206,30 +207,43 @@ function openModal(projectId) {
     <li>${feature}</li>
   `).join('');
   
-  // Update media
+// Update media
   const mediaContainer = document.getElementById('modalMedia');
+  const getMediaHTML = (item) => {
+    if (item.type === 'video') {
+      return `<video src="${item.url || item.src}" controls class="media-content"></video>`;
+    } else if (item.url || item.src) {
+      return `<img src="${item.url || item.src}" alt="${item.text}" class="media-content">`;
+    } else {
+      // Si no hay URL, mostramos el placeholder anterior
+      return `
+        <div class="media-placeholder">
+          <span class="media-placeholder-icon">${item.placeholder}</span>
+          <span>${item.text}</span>
+        </div>`;
+    }
+  };
+
   mediaContainer.innerHTML = `
     <div class="media-main">
-      <div class="media-placeholder">
-        <span class="media-placeholder-icon">${project.media[0].placeholder}</span>
-        <span>${project.media[0].text}</span>
-      </div>
+      ${getMediaHTML(project.media[0])}
     </div>
     <div class="media-thumbnails">
       ${project.media.map((item, index) => `
         <div class="media-thumb ${index === 0 ? 'active' : ''}" data-index="${index}">
-          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">
-            ${item.placeholder}
-          </div>
+          ${(item.url || item.src) 
+            ? `<img src="${item.url || item.src}" style="width:100%;height:100%;object-fit:cover;">`
+            : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">${item.placeholder}</div>`
+          }
         </div>
       `).join('')}
     </div>
   `;
   
-  // Add thumbnail click handlers
+// Add thumbnail click handlers (Actualizado para cambiar imágenes reales)
   const thumbnails = mediaContainer.querySelectorAll('.media-thumb');
   const mainMedia = mediaContainer.querySelector('.media-main');
-  
+
   thumbnails.forEach(thumb => {
     thumb.addEventListener('click', () => {
       const index = parseInt(thumb.dataset.index);
@@ -238,12 +252,7 @@ function openModal(projectId) {
       thumbnails.forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
       
-      mainMedia.innerHTML = `
-        <div class="media-placeholder">
-          <span class="media-placeholder-icon">${mediaItem.placeholder}</span>
-          <span>${mediaItem.text}</span>
-        </div>
-      `;
+      mainMedia.innerHTML = getMediaHTML(mediaItem);
     });
   });
   
