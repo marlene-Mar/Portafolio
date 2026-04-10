@@ -80,39 +80,32 @@ const projectsData = {
     ]
   },
   'computacion-grafica': {
-    title: 'Proyecto de Computación Gráfica',
+    title: 'Recorrido Virtual',
     category: 'Computación Gráfica',
-    description: `Proyecto académico enfocado en la exploración y aplicación de técnicas avanzadas 
-    de renderizado y programación de shaders. El proyecto incluye implementaciones de iluminación 
-    física, efectos de post-procesamiento y técnicas de rendering en tiempo real.
+    description: `Recorrido virtual de un hotel, enfocado en aplicar los conocimientos adquiridos de la 
+    materia "Computación Gráfica", tales como: texturizado, iluminación, shaders, modelado 3D y animación 
+    por keyframes.`,
     
-    Se estudiaron conceptos como ray marching, physically based rendering (PBR), 
-    y técnicas de optimización para gráficos en tiempo real.`,
     tools: [
       { name: 'OpenGL', icon: '🔷' },
       { name: 'GLSL', icon: '✨' },
       { name: 'C++', icon: '💻' },
-      { name: 'CMake', icon: '🔧' },
-      { name: 'Visual Studio', icon: '🖥️' }
+      { name: '3ds Max', icon: '🖌️' },
     ],
     features: [
-      'Iluminación PBR (Physically Based Rendering)',
       'Shaders personalizados GLSL',
-      'Efectos de post-procesamiento',
-      'Técnicas de ray marching',
-      'Optimización de rendimiento',
-      'Documentación técnica completa'
+      'Documentación técnica completa',
+      'Manual de usuario'
     ],
-    implementation: `El proyecto fue implementado desde cero utilizando OpenGL moderno (core profile) 
-    y GLSL para los shaders. Se desarrolló un pipeline de renderizado completo incluyendo 
-    vertex, fragment y geometry shaders. La arquitectura permite fácil extensión para 
-    experimentar con diferentes técnicas de renderizado.`,
+    implementation: `El proyecto fue implementado desde cero utilizando OpenGL. Se desarrolló un pipeline 
+    de renderizado completo incluyendo vertex y fragment shaders. Modelado 3D de algunos elementos del hotel,
+    así como el texturizado de los modelos en 3ds Max.`,
     links: {
       demo: '#',
-      github: '#'
+      github: 'https://github.com/marlene-Mar/ProyectoGrafica.git'
     },
     media: [
-      { type: 'image', placeholder: '💎', text: 'Escena renderizada' },
+      { type: 'image', placeholder: '💎', text: 'Escena renderizada'},
       { type: 'image', placeholder: '🌟', text: 'Efectos de luz' },
       { type: 'image', placeholder: '🔮', text: 'Shaders' }
     ]
