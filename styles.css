@@ -732,7 +732,7 @@ input, textarea {
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  transform: translateY(20px) scale(1);
+  transform: translateY(20px) scale(0.95);
   transition: var(--transition-medium);
 }
 
@@ -838,28 +838,6 @@ input, textarea {
 .media-thumb:hover,
 .media-thumb.active {
   border-color: var(--pink-accent);
-}
-
-/*MEDIA*/
-.media-content {
-    width: 50%;
-    height: 50%;
-    object-fit: cover; /* O 'cover' si prefieres que llenen todo el espacio */
-    border-radius: 8px;
-    display: block;
-}
-
-.media-main {
-    background: #f0f0f0; /* Color de fondo si la imagen es transparente o pequeña */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    min-height: 300px; /* Ajusta según el tamaño de tu modal */
-}
-
-.media-thumb img {
-    border-radius: 4px;
 }
 
 .info-section {
@@ -1243,7 +1221,6 @@ input, textarea {
   opacity: 0.6;
   font-size: 0.9rem;
 }
-
 
 /* ========================================
    RESPONSIVE
