@@ -32,38 +32,38 @@ const projectsData = {
     Los modelos 3D de los perros fueron adquiridos en internet, y el perro seleccionable fue modificado y animado en 3ds Max. 
     Se implementó un sistema de detección de marcadores para posicionar los modelos en el mundo real.`,
     links: {
-      demo: '#',
+      demo: 'https://youtube.com/shorts/VkmAjMnsvgk?feature=share',
       github: 'https://github.com/marlene-Mar/ProyectoRA.git'
     },
     media: [
-      { type: 'image', placeholder: '🐕', text: 'Vista principal AR' },
-      { type: 'image', placeholder: '🎯', text: 'Selección de trucos' },
-      { type: 'image', placeholder: '📋', text: 'Instrucciones' }
+      { type: 'image', src: 'images/vistaRA.jpeg', text: 'Vista principal AR' },
+      { type: 'image', src: 'images/trucos.jpeg', text: 'Selección de trucos' },
+      { type: 'image', src: 'images/instrucciones.jpeg', text: 'Intrucciones' },
     ]
   },
   'sweet-fight': {
     title: 'Sweet Fight',
     category: 'Videojuego',
-    description: `Sweet Fight es un videojuego de acción con una estética colorida y temática de dulces. 
-    Los jugadores controlan personajes inspirados en postres y golosinas mientras luchan en escenarios 
-    fantásticos llenos de color y diversión.
+    description: `Sweet Fight es un videojuego de acción y aventura con una estética colorida y temática de dulces. 
+    Los jugadores controlan al personaje Pompompurin del universo Sanrio, mientras luchan en un mapa inspirado en 
+    algodón de azúcar.
     
-    El juego combina mecánicas de combate accesibles con un estilo visual único que atrae tanto a 
-    jugadores casuales como a fans de los juegos de peleas.`,
+    El juego combina mecánicas de combate accesibles con un estilo visual único, con el objetivo de atraer tanto a 
+    jugadores casuales como a fans de la franquicia.`,
     tools: [
       { name: 'Unity', icon: '🎮' },
-      { name: 'Blender', icon: '🎨' },
+      { name: '3ds Max', icon: '🎨' },
       { name: 'C#', icon: '💻' },
       { name: 'Photoshop', icon: '🖌️' },
-      { name: 'Substance Painter', icon: '🎭' }
+      { name: 'SculptGL', icon: '⛏️' }
     ],
     features: [
       'Personajes originales temáticos',
-      'Sistema de combate fluido',
-      'Múltiples escenarios coloridos',
-      'Efectos visuales estilizados',
-      'Modo historia y versus',
-      'Banda sonora original'
+      'Personaje inspirado en el universo Sanrio',
+      'Recolección de objetos',
+      'Adquisición de aliados',
+      'Sistema de inventario',
+      'Combate cronometrado'
     ],
     implementation: `Desarrollado en Unity con un pipeline de arte personalizado para lograr el estilo 
     visual distintivo. Los personajes fueron modelados en Blender con un estilo low-poly estilizado 
@@ -71,12 +71,12 @@ const projectsData = {
     pero con profundidad suficiente para jugadores experimentados.`,
     links: {
       demo: '#',
-      github: '#'
+      github: 'https://github.com/marlene-Mar/SweetFight.git'
     },
     media: [
-      { type: 'image', placeholder: '🍬', text: 'Gameplay' },
-      { type: 'image', placeholder: '🧁', text: 'Personajes' },
-      { type: 'image', placeholder: '🍭', text: 'Escenarios' }
+      { type: 'image', src: '', text: 'Vista principal AR' },
+      { type: 'image', src: '', text: 'Selección de trucos' },
+      { type: 'image', src: '', text: 'Intrucciones' },
     ]
   },
   'computacion-grafica': {
@@ -105,9 +105,10 @@ const projectsData = {
       github: 'https://github.com/marlene-Mar/ProyectoGrafica.git'
     },
     media: [
-      { type: 'image', placeholder: '💎', text: 'Escena renderizada'},
-      { type: 'image', placeholder: '🌟', text: 'Efectos de luz' },
-      { type: 'image', placeholder: '🔮', text: 'Shaders' }
+      { type: 'image', src: 'images/modFinal.jpg', text: 'Escena completa'},
+      { type: 'image', src: 'images/mod1.jpg', text: 'Modelado de alberca' },
+      { type: 'image', src: 'images/mod2.jpg', text: 'Texturizado de hotel' },
+      { type: 'image', src: 'images/anim1.jpg', text: 'Animación por shaders' }
     ]
   }
 };
@@ -208,28 +209,43 @@ function openModal(projectId) {
   
   // Update media
   const mediaContainer = document.getElementById('modalMedia');
+  
+  // Función interna para generar el HTML de la imagen o el video
+  const getMediaHTML = (item) => {
+    if (item.type === 'video') {
+      return `<video src="${item.url || item.src}" controls class="media-content"></video>`;
+    } else if (item.url || item.src) {
+      return `<img src="${item.url || item.src}" alt="${item.text}" class="media-content">`;
+    } else {
+      // Si no hay URL, mostramos el placeholder anterior
+      return `
+        <div class="media-placeholder">
+          <span class="media-placeholder-icon">${item.placeholder}</span>
+          <span>${item.text}</span>
+        </div>`;
+    }
+  };
+
   mediaContainer.innerHTML = `
     <div class="media-main">
-      <div class="media-placeholder">
-        <span class="media-placeholder-icon">${project.media[0].placeholder}</span>
-        <span>${project.media[0].text}</span>
-      </div>
+      ${getMediaHTML(project.media[0])}
     </div>
     <div class="media-thumbnails">
       ${project.media.map((item, index) => `
         <div class="media-thumb ${index === 0 ? 'active' : ''}" data-index="${index}">
-          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">
-            ${item.placeholder}
-          </div>
+          ${(item.url || item.src) 
+            ? `<img src="${item.url || item.src}" style="width:100%;height:100%;object-fit:cover;">`
+            : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">${item.placeholder}</div>`
+          }
         </div>
       `).join('')}
     </div>
   `;
-  
-  // Add thumbnail click handlers
+
+  // Add thumbnail click handlers (Actualizado para cambiar imágenes reales)
   const thumbnails = mediaContainer.querySelectorAll('.media-thumb');
   const mainMedia = mediaContainer.querySelector('.media-main');
-  
+
   thumbnails.forEach(thumb => {
     thumb.addEventListener('click', () => {
       const index = parseInt(thumb.dataset.index);
@@ -238,12 +254,7 @@ function openModal(projectId) {
       thumbnails.forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
       
-      mainMedia.innerHTML = `
-        <div class="media-placeholder">
-          <span class="media-placeholder-icon">${mediaItem.placeholder}</span>
-          <span>${mediaItem.text}</span>
-        </div>
-      `;
+      mainMedia.innerHTML = getMediaHTML(mediaItem);
     });
   });
   
