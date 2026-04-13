@@ -63,20 +63,24 @@ const projectsData = {
       'Recolección de objetos',
       'Adquisición de aliados',
       'Sistema de inventario',
-      'Combate cronometrado'
+      'Combate cronometrado',
+      'Mini mapa'
     ],
     implementation: `Desarrollado en Unity con un pipeline de arte personalizado para lograr el estilo 
     visual distintivo. Los personajes fueron modelados en Blender con un estilo low-poly estilizado 
     y texturizados en Substance Painter. El sistema de combate fue diseñado para ser accesible 
     pero con profundidad suficiente para jugadores experimentados.`,
     links: {
-      demo: '#',
+      demo: 'https://youtu.be/sL6wYfIsyCM',
       github: 'https://github.com/marlene-Mar/SweetFight.git'
     },
     media: [
-      { type: 'image', src: '', text: 'Vista principal AR' },
-      { type: 'image', src: '', text: 'Selección de trucos' },
-      { type: 'image', src: '', text: 'Intrucciones' },
+      { type: 'image', src: 'images/inicio.png', text: 'Menu de inicio' },
+      { type: 'image', src: 'images/menu.png', text: 'Menu principal' },
+      { type: 'image', src: 'images/game1.png', text: 'Game 1' },
+      { type: 'image', src: 'images/game2.png', text: 'Game 2' },   
+      { type: 'image', src: 'images/game3.png', text: 'Game 3' },
+      { type: 'image', src: 'images/game4.png', text: 'Game 4' }
     ]
   },
   'computacion-grafica': {
@@ -101,7 +105,7 @@ const projectsData = {
     de renderizado completo incluyendo vertex y fragment shaders. Modelado 3D de algunos elementos del hotel,
     así como el texturizado de los modelos en 3ds Max.`,
     links: {
-      demo: '#',
+      demo: 'https://youtu.be/b-aAj3w3zMk',
       github: 'https://github.com/marlene-Mar/ProyectoGrafica.git'
     },
     media: [
