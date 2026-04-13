@@ -6,7 +6,7 @@ const projectsData = {
     title: 'Trufosos - Entrenador de perros',
     category: 'AR',
     description: `Aplicación de realidad aumentada para Android que permite a los usuarios visualizar 
-    y aprender técnicas de entrenamiento canino de manera interactiva. Los usuarios pueden observar un catálogo 
+    y aprender técnicas de entrenamiento canino de manera interactiva. Los usuarios pueden observar un catálogo de
     diferentes razas de perros, por medio de la cámara de su dispositivo móvil al contar con los marcadores descargables
     seleccionar uno de ellos e iniciar un pequeño juego de tres niveles como guía del paso a paso del entrenamiento, 
     con ello aprender los diferentes escenarios que se enfrentarán con un perro real.
@@ -67,9 +67,7 @@ const projectsData = {
       'Mini mapa'
     ],
     implementation: `Desarrollado en Unity con un pipeline de arte personalizado para lograr el estilo 
-    visual distintivo. Los personajes fueron modelados en Blender con un estilo low-poly estilizado 
-    y texturizados en Substance Painter. El sistema de combate fue diseñado para ser accesible 
-    pero con profundidad suficiente para jugadores experimentados.`,
+    visual distintivo. Los personajes fueron modelados en 3ds Max y SculptGL, animados con Mixamo.`,
     links: {
       demo: 'https://youtu.be/sL6wYfIsyCM',
       github: 'https://github.com/marlene-Mar/SweetFight.git'
@@ -339,9 +337,41 @@ contactForm.addEventListener('submit', (e) => {
   
   const formData = new FormData(contactForm);
   const data = Object.fromEntries(formData);
-  
+  const contactForm = document.getElementById('contact-form');
+
   // Aquí puedes agregar la lógica para enviar el formulario
-  console.log('Form submitted:', data);
+
+  if (contactForm) {
+      contactForm.addEventListener('submit', async function(e) {
+          e.preventDefault(); // Evita que la página se recargue
+          
+          const form = e.target;
+          const data = new FormData(form);
+          const button = form.querySelector('.submit-btn');
+          
+          button.textContent = 'Enviando...';
+          button.disabled = true;
+
+          // Enviamos los datos a Formspree
+          const response = await fetch(form.action, {
+              method: form.method,
+              body: data,
+              headers: {
+                  'Accept': 'application/json'
+              }
+          });
+
+        if (response.ok) {
+            alert('¡Gracias por tu mensaje, Marlene lo recibirá pronto!');
+            form.reset();
+        } else {
+            alert('Ups! Hubo un problema al enviar el mensaje.');
+        }
+        
+        button.textContent = 'Enviar Mensaje';
+        button.disabled = false;
+    });
+} 
   
   // Mostrar mensaje de éxito
   const submitBtn = contactForm.querySelector('.btn-submit');

@@ -792,7 +792,7 @@ input, textarea {
 
 .media-main {
   width: 100%;
-  height: 350px;
+  height: 450px;
   background: var(--gray-light);
   border-radius: var(--radius-lg);
   display: flex;
@@ -804,8 +804,8 @@ input, textarea {
 
 .media-main img,
 .media-main video {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: cover;
   object-fit: cover;
 }
 
